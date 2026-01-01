@@ -79,7 +79,7 @@ Example from the level 1
 As you can see every light source(if it can be called that way) has 4(actually 3 since areas is an array) parameters
 - `mode` (int) - allows you to select in which way light(color) applies to the area. All light modes are defined in the `hal_structs.glsl`
 - `color` (vec4, rgba) - just color of the light
-- `areas` (arr) - array of starting and ending points of the area that should be filled with light (But you always can keep maximum areas count at 1 and just repeat colors)
+- `areas` (arr) - array of starting and ending points of the areas that should be filled with light (But you always can keep maximum areas count at 1 and just repeat colors)
 
 More screenshots:\
 <img width="342" height="192" alt="2025-12-31_15 18 36" src="https://github.com/user-attachments/assets/5d2207d4-7af6-40ff-b6ef-06c2095393f7" /> <img width="342" height="192" alt="2025-12-31_14 48 50" src="https://github.com/user-attachments/assets/ac1389d9-323c-4bb4-b28a-cfd269a3e2e0" />
