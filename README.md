@@ -1,5 +1,6 @@
 # Minecraft-HAL-Lighting-VanillaShader
 _I don't remember why it is named HAL.._
+Minecraft 26.1 Snapshot 1
 
 Video: https://youtu.be/WDjhtDT9G6Y
 
