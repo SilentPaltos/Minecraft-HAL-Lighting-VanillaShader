@@ -13,7 +13,7 @@ Here is some screenshots from the developing process:
 This shader allow you to create areas that filled with light
 It has 3 main files:
 - `hal_structs.glsl` - just custom variable types but also it defines light modes
-- `hal_list.glsl` - list of areas tht will be filled with light
+- `hal_list.glsl` - list of areas that will be filled with light
 - `hal.glsl` - all the functions for lighting. Also here count of lights is defined
 
 Mainly you need only `hal_list.glsl` and `hal.glsl`
