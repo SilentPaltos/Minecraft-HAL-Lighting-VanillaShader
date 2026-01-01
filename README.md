@@ -24,7 +24,7 @@ in `hal.glsl` you only need these 2 lines:
 #define LIGHT_AREAS_COUNT 1
 ```
 `LIGHTS_COLORS_COUNT` - defines how many light colors you can use\
-`LIGHT_AREAS_COUNT` - defines how many areas can be created for 1 color
+`LIGHT_AREAS_COUNT` - defines how many areas can be created for 1 color\
 Actually you can keep `LIGHT_AREAS_COUNT 1` and just change number of colors and then you can just create two separate lights with identical color value
 
 Talking about creating lights...\
