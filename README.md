@@ -5,6 +5,9 @@ It might be not perfect but I just wanted to create some lighting system using m
 
 Here is some screenshots from the developing process:\
 <img width="342" height="192" alt="2025-12-30_21 56 08" src="https://github.com/user-attachments/assets/73350011-81b9-472f-bedd-5fb603f94d0c" /> <img width="342" height="192" alt="2025-12-30_15 41 03" src="https://github.com/user-attachments/assets/0580e6ef-de2e-4c24-942a-ca5accfdca50" />
+<img width="342" height="192" alt="2025-12-31_00 42 59" src="https://github.com/user-attachments/assets/22e1f5ae-a74f-462e-a697-3e3c3de87701" /> <img width="342" height="192" alt="2025-12-30_15 43 17" src="https://github.com/user-attachments/assets/38bfd014-5dad-4c06-82c5-4c9bc1c4fc9a" />
+
+
 
 
 
