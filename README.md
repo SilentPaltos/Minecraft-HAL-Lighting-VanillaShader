@@ -75,7 +75,7 @@ Example from the level 1
         lights[4].areas[0].end =   vec3( 21.5, -50.5, 3.5 );
 ```
 
-As you can see every light source(if it can be called that way) has 4(actually 3 since areas are arrays) parameters
+As you can see every light source(if it can be called that way) has 4(actually 3 since `areas` is an arrays) parameters
 - `mode` (int) - allows you to select in which way light(color) applies to the area. All light modes are defined in the `hal_structs.glsl`
 - `color` (vec4, rgba) - just color of the light
 - `areas` (arr) - array of starting and ending points of the areas that should be filled with light (But you always can keep maximum areas count at 1 and just repeat colors)
