@@ -3,9 +3,8 @@ _I don't remember why it is called HAL.._
 
 It might be not perfect but I just wanted to create some lighting system using minecraft vanilla shaders. It affects blocks, entities and particles, but it is also unfinished since not all object are affected by this system. Probably I'll fix it.
 
-Here is some screenshots from the developing process:
-<img width="683" height="384" alt="2025-12-30_21 56 08" src="https://github.com/user-attachments/assets/73350011-81b9-472f-bedd-5fb603f94d0c" />
-<img width="683" height="384" alt="2025-12-30_15 41 03" src="https://github.com/user-attachments/assets/0580e6ef-de2e-4c24-942a-ca5accfdca50" />
+Here is some screenshots from the developing process:\
+<img width="342" height="192" alt="2025-12-30_21 56 08" src="https://github.com/user-attachments/assets/73350011-81b9-472f-bedd-5fb603f94d0c" /> <img width="342" height="192" alt="2025-12-30_15 41 03" src="https://github.com/user-attachments/assets/0580e6ef-de2e-4c24-942a-ca5accfdca50" />
 
 
 
@@ -80,9 +79,7 @@ As you can see every light source(if it can be called that way) has 4(actually 3
 - `areas` (arr) - array of starting and ending points of the area that should be filled with light (But you always can keep maximum areas count at 1 and just repeat colors)
 
 More screenshots:\
-<img width="683" height="384" alt="2025-12-31_15 18 36" src="https://github.com/user-attachments/assets/5d2207d4-7af6-40ff-b6ef-06c2095393f7" />
-<img width="683" height="384" alt="2025-12-31_14 48 50" src="https://github.com/user-attachments/assets/ac1389d9-323c-4bb4-b28a-cfd269a3e2e0" />
-<img width="683" height="384" alt="2025-12-30_21 14 59" src="https://github.com/user-attachments/assets/fd88b3f6-7525-4cdc-8210-11f8054fda73" />
-<img width="683" height="384" alt="2025-12-31_00 21 30" src="https://github.com/user-attachments/assets/2f305b12-ae75-4449-822e-b98cb0cfa5ee" />
-<img width="683" height="384" alt="2025-12-30_16 54 55" src="https://github.com/user-attachments/assets/b6c93172-dcf8-4787-af2a-0c8380dfab38" />
+<img width="342" height="192" alt="2025-12-31_15 18 36" src="https://github.com/user-attachments/assets/5d2207d4-7af6-40ff-b6ef-06c2095393f7" /> <img width="342" height="192" alt="2025-12-31_14 48 50" src="https://github.com/user-attachments/assets/ac1389d9-323c-4bb4-b28a-cfd269a3e2e0" />
+<img width="342" height="192" alt="2025-12-30_21 14 59" src="https://github.com/user-attachments/assets/fd88b3f6-7525-4cdc-8210-11f8054fda73" /> <img width="342" height="192" alt="2025-12-31_00 21 30" src="https://github.com/user-attachments/assets/2f305b12-ae75-4449-822e-b98cb0cfa5ee" />
+<img width="342" height="192" alt="2025-12-30_16 54 55" src="https://github.com/user-attachments/assets/b6c93172-dcf8-4787-af2a-0c8380dfab38" /> <img width="342" height="192" alt="2025-12-31_15 49 31" src="https://github.com/user-attachments/assets/440b720a-3822-4b46-9a33-4a1217714c3f" />
 
