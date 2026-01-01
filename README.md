@@ -1,6 +1,8 @@
 # Minecraft-HAL-Lighting-VanillaShader
 _I don't remember why it is named HAL.._
 
+Video: https://youtu.be/WDjhtDT9G6Y
+
 It might be not perfect but I just wanted to create some lighting system using minecraft vanilla shaders. Just for fun.\
 It affects blocks, entities and particles, but it is also unfinished since not all object are affected by this system. And there is a lot of things that can be done to improve this shader. Probably I'll fix all of it.
 
