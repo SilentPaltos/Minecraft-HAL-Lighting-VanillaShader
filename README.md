@@ -27,7 +27,7 @@ It has next files:
 
 Mainly you need only `hal_list.glsl` and `hal_config.glsl`
 
-in `hal_cnofig.glsl` you only need these lines:
+in `hal_config.glsl` you only need these lines:
 ```
 #define     AREA_LIGHTS_COUNT 100
 #define LIGHT_RENDER_DISTANCE -1
@@ -35,11 +35,11 @@ in `hal_cnofig.glsl` you only need these lines:
 ```
 - `AREA_LIGHTS_COUNT` - defines how many light areas you can store in the shader
 - `LIGHT_RENDER_DISTANCE` - defines how far light renders
-- `FIX_OUT_OF_BOUNDS_MIX` - I don't remeber why exatcly I needed to add this but probably it's important
+- `FIX_OUT_OF_BOUNDS_MIX` - I don't remember why exactly I needed to add this but probably it's important
 
 Talking about creating lights...\
 You can create them in the `hal_list.glsl`\
-There is some exapmle how you can create them
+There is some examples how you can create them
 ```
 // default way to create
         area_light[0] = arealight(
@@ -85,6 +85,3 @@ More screenshots:\
 <img width="342" height="192" alt="2025-12-30_21 14 59" src="https://github.com/user-attachments/assets/fd88b3f6-7525-4cdc-8210-11f8054fda73" /> <img width="342" height="192" alt="2025-12-31_00 21 30" src="https://github.com/user-attachments/assets/2f305b12-ae75-4449-822e-b98cb0cfa5ee" />
 <img width="342" height="192" alt="2025-12-30_16 54 55" src="https://github.com/user-attachments/assets/b6c93172-dcf8-4787-af2a-0c8380dfab38" /> <img width="342" height="192" alt="2025-12-31_15 49 31" src="https://github.com/user-attachments/assets/440b720a-3822-4b46-9a33-4a1217714c3f" />
 <img width="342" height="192" alt="2025-12-30_21 34 53" src="https://github.com/user-attachments/assets/93f9b7d4-480e-4d9d-8463-acd2683b132d" /> <img width="342" height="192" alt="2025-12-30_17 42 23" src="https://github.com/user-attachments/assets/7f448859-f023-4ddd-8972-b2053dd11968" />
-
-
-
