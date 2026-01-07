@@ -27,7 +27,6 @@ void main() {
     texCoord0 = UV0;
     vertexColor = Color * minecraft_sample_lightmap(Sampler2, UV2);
     // lighting
-    init_lights();
     vec3 pos = Position + CameraBlockPos - CameraOffset;
-    vertexColor = apply_hal( vertexColor, pos, lights);
+    vertexColor = apply_hal(vertexColor, pos, length(Position));
 }

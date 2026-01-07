@@ -48,24 +48,24 @@ void main() {
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
 
-    init_lights();
     vec3 pos = Position + CameraBlockPos - CameraOffset;
 #ifdef PER_FACE_LIGHTING
     vec2 light = minecraft_compute_light(Light0_Direction, Light1_Direction, Normal);
     vertexPerFaceColorBack = minecraft_mix_light_separate(-light, Color);
     vertexPerFaceColorFront = minecraft_mix_light_separate(light, Color);
-    vertexPerFaceColorBack = apply_hal( vertexPerFaceColorBack, pos, lights);
-    vertexPerFaceColorFront = apply_hal( vertexPerFaceColorFront, pos, lights);
+    vertexPerFaceColorBack = apply_hal(vertexPerFaceColorBack, pos, length(Position));
+    vertexPerFaceColorFront = apply_hal(vertexPerFaceColorFront, pos, length(Position));
 #elif defined(NO_CARDINAL_LIGHTING)
     vertexColor = Color;
-    vertexColor = apply_hal( vertexColor, pos, lights);
+    vertexColor = apply_hal(vertexColor, pos, length(Position));
 #else
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
-    vertexColor = apply_hal( vertexColor, pos, lights);
+    vertexColor = apply_hal(vertexColor, pos, length(Position));
 #endif
 
 #ifndef EMISSIVE
-    lightMapColor = apply_hal(texelFetch(Sampler2, UV2 / 16, 0), pos, lights);
+    lightMapColor = texelFetch(Sampler2, UV2 / 16, 0);
+    lightMapColor = apply_hal(lightMapColor, pos, length(Position));
 #endif
 
 #ifndef NO_OVERLAY

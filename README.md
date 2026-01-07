@@ -5,80 +5,80 @@ Minecraft 26.1 Snapshot 1
 Video: https://youtu.be/WDjhtDT9G6Y
 
 It might be not perfect but I just wanted to create some lighting system using minecraft vanilla shaders. Just for fun.\
-It affects blocks, entities and particles, but it is also unfinished since not all object are affected by this system. And there is a lot of things that can be done to improve this shader. Probably I'll fix all of it.
+It affects blocks, entities and particles, but it is still unfinished since not all object are affected by this system. And there is a lot of things that can be done to improve this shader. Probably I'll fix all of it.
 
 Here is some screenshots from the developing process:\
 <img width="342" height="192" alt="2025-12-30_21 56 08" src="https://github.com/user-attachments/assets/73350011-81b9-472f-bedd-5fb603f94d0c" /> <img width="342" height="192" alt="2025-12-30_15 41 03" src="https://github.com/user-attachments/assets/0580e6ef-de2e-4c24-942a-ca5accfdca50" />
 <img width="342" height="192" alt="2025-12-31_00 42 59" src="https://github.com/user-attachments/assets/22e1f5ae-a74f-462e-a697-3e3c3de87701" /> <img width="342" height="192" alt="2025-12-30_15 43 17" src="https://github.com/user-attachments/assets/38bfd014-5dad-4c06-82c5-4c9bc1c4fc9a" />
+<img width="342" height="192" alt="2026-01-06_17 52 12" src="https://github.com/user-attachments/assets/364c645c-aeab-4aeb-af97-a20252fac74f" />
+<img width="342" height="192" alt="2026-01-06_17 59 47" src="https://github.com/user-attachments/assets/82a30691-3f50-460e-b465-5aac338b6420" />
+<img width="342" height="192" alt="2026-01-06_02 47 52" src="https://github.com/user-attachments/assets/a7e955c0-297c-4636-9cca-c429dffdca7c" />
+<img width="342" height="192" alt="2026-01-02_22 05 24" src="https://github.com/user-attachments/assets/3f1fc782-fd9c-4481-b35d-196a9a259d5c" />
+
+
 
 This shader allow you to create areas that filled with light\
-It has 3 main files:
-- `hal_structs.glsl` - just custom variable types but also it defines light modes
+It has next files:
+- `hal_config.glsl` - some values to configure
 - `hal_list.glsl` - list of areas that will be filled with light
-- `hal.glsl` - all the functions for lighting. Also here count of lights is defined
+- `hal_modes.glsl` - blend modes for lighting
+- `hal_shapes.glsl` - shapes of areas in which light "spreads"
+- `hal.glsl` - main file for lighting. Also here count of lights is defined
 
-Mainly you need only `hal_list.glsl` and `hal.glsl`
+Mainly you need only `hal_list.glsl` and `hal_config.glsl`
 
-in `hal.glsl` you only need these 2 lines:
+in `hal_cnofig.glsl` you only need these lines:
 ```
-#define LIGHTS_COLORS_COUNT 50
-#define LIGHT_AREAS_COUNT 1
+#define     AREA_LIGHTS_COUNT 100
+#define LIGHT_RENDER_DISTANCE -1
+#define FIX_OUT_OF_BOUNDS_MIX true
 ```
-`LIGHTS_COLORS_COUNT` - defines how many light colors you can use\
-`LIGHT_AREAS_COUNT` - defines how many areas can be created for 1 color\
-Actually you can keep `LIGHT_AREAS_COUNT 1` and just change number of colors and then you can just create two separate lights with identical color value
+- `AREA_LIGHTS_COUNT` - defines how many light areas you can store in the shader
+- `LIGHT_RENDER_DISTANCE` - defines how far light renders
+- `FIX_OUT_OF_BOUNDS_MIX` - I don't remeber why exatcly I needed to add this but probably it's important
 
 Talking about creating lights...\
 You can create them in the `hal_list.glsl`\
-Here is example from the Parkour Map that you can also download. I created this map just for demonstration
+There is some exapmle how you can create them
 ```
-// lobby
+// default way to create
+        area_light[0] = arealight(
+            vec4( 1.0, 0.0, 0.0, 0.0 ), vec4( 0.0, 0.0, 0.0, 0.0 ), 
+            vec3( 0.5, 0.0, 0.0 ), LIGHT_MODE_ADD,
+            vec3( -247, -44, 14 ), vec3( 5.0, 0.0, 0.0 ),
+            LIGHT_SHAPE_CUBOID,    vec3( 5.5, 5.5, 5.5 )
+        );
 
-        // lights
+// using variables
+        arealight CHECKPOINT_DEFAULT = arealight(
+            vec4( 0.4, 0.6, 1.0, 0.0 ) * 1.1, vec4( 0.0, 0.0, 0.0, 0.0 ), 
+            vec3( 1.0, 0.25, 1.0 ), LIGHT_MODE_ADD,
+            vec3( 0, 0, 0 ),    vec3( 0.0, 1.5, 0.0 ),
+            LIGHT_SHAPE_CUBOID, vec3( 1.5, 1.5, 1.5 )
+        );
+        area_light[5] = CHECKPOINT_DEFAULT;
+        area_light[5].pos = vec3( 24.5, -48.5, 9.5 );
 
-            // orange
-            lights[46].mode = LIGHT_MODE_ADD;
-            lights[46].color = vec4( 1, 0.5, 0, 0 );
-            lights[46].areas[0].start = vec3( 81.0, -60.1, 74.0 );
-            lights[46].areas[0].end =   vec3( 84.0, -50.0, 77.0 );
-
-            // magenta
-            lights[47].mode = LIGHT_MODE_ADD;
-            lights[47].color = vec4( 1, 0, 1, 0 );
-            lights[47].areas[0].start = vec3( 81.0, -60.1, 68.0 );
-            lights[47].areas[0].end =   vec3( 84.0, -50.0, 71.0 );
-
-            // cyan
-            lights[48].mode = LIGHT_MODE_ADD;
-            lights[48].color = vec4( 0, 0.7, 0.6, 0 );
-            lights[48].areas[0].start = vec3( 81.0, -60.1, 62.0 );
-            lights[48].areas[0].end =   vec3( 84.0, -50.0, 65.0 );
-
-        // shades
-        lights[49].mode = LIGHT_MODE_SUBTRACT;
-        lights[49].color = vec4( 1, 1, 1, 1 );
-        lights[49].areas[0].start = vec3( 75.0, -60.1, 62.0 );
-        lights[49].areas[0].end =   vec3( 76.0, -50.0, 77.0 );
-```
-
-Example from the level 1
-```
-// red lights
-        lights[3].mode = LIGHT_MODE_ADD;
-        lights[3].color = vec4( 0.5, 0, 0, 0 );
-        lights[3].areas[0].start = vec3( 19.5, -54.5, 13.0 );
-        lights[3].areas[0].end =   vec3( 21.5, -50.5, 14.0 );
-
-        lights[4].mode = LIGHT_MODE_ADD;
-        lights[4].color = vec4( 0.5, 0, 0, 0 );
-        lights[4].areas[0].start = vec3( 19.5, -54.5, 2.5 );
-        lights[4].areas[0].end =   vec3( 21.5, -50.5, 3.5 );
+// by components
+        area_light[11].mode         = LIGHT_MODE_ADD;
+        area_light[11].start_color  = vec4( 1.0, 0.7, 0.1, 0.0 ) * 0.8;
+        area_light[11].end_color    = vec4( 0.0, 0.0, 0.0, 0.0 );
+        area_light[11].mix_strength = vec3( 0.0, 0.0, 0.8 );
+        area_light[11].shape           = LIGHT_SHAPE_CUBOID;
+        area_light[11].pos             = vec3( -3.5, -49.0, 16.0 );
+        area_light[11].shape_parameter = vec3( 1.0, 1.0, 1.9 );
+        area_light[11].offset          = vec3( 0.0, 1.0, 0.0 );
 ```
 
-As you can see every light source(if it can be called that way) has 4(actually 3 since `areas` is an array) parameters
-- `mode` (int) - allows you to select in which way light(color) applies to the area. All light modes are defined in the `hal_structs.glsl`
-- `color` (vec4, rgba) - just color of the light
-- `areas` (arr) - array of starting and ending points of the areas that should be filled with light (But you always can keep maximum areas count at 1 and just repeat colors)
+As you can see every light source(if it can be called that way) has 8 parameters
+- `start_color` (vec4, rgba) - start_color of the light
+- `end_color` (vec4, rgba) - end_color of the light
+- `mix_strngth` (vec3, xyz) - how color blends between start and end colors in each axis
+- `mode` (int) - how color applies to verticies
+- `pos` (vec3, xyz) - center position of the light area
+- `offset` (vec3, xyz) - offset off the light starting point from the area center
+- `shape` (int) - shape of the area
+- `shape_parameter` (vec3, xyz) - light "spread" distance in each axis (both positive and negative direction)
 
 More screenshots:\
 <img width="342" height="192" alt="2025-12-31_15 18 36" src="https://github.com/user-attachments/assets/5d2207d4-7af6-40ff-b6ef-06c2095393f7" /> <img width="342" height="192" alt="2025-12-31_14 48 50" src="https://github.com/user-attachments/assets/ac1389d9-323c-4bb4-b28a-cfd269a3e2e0" />

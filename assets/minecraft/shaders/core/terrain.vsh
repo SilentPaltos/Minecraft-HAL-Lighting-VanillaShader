@@ -26,7 +26,6 @@ void main() {
     sphericalVertexDistance = fog_spherical_distance(pos);
     cylindricalVertexDistance = fog_cylindrical_distance(pos);
     vertexColor = Color * minecraft_sample_lightmap(Sampler2, UV2);
-    init_lights();
-    vertexColor = apply_hal( vertexColor, Position + ChunkPosition, lights);
+    vertexColor = apply_hal(vertexColor, Position + ChunkPosition, length(pos));
     texCoord0 = UV0;
 }
