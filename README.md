@@ -1,6 +1,10 @@
 # Minecraft-HAL-Lighting-VanillaShader
-_I don't remember why it is named HAL.._\
-Minecraft 26.1 Snapshot 1
+_I don't remember why it is named HAL.._
+
+I created it as a tool for making lighting on maps
+
+Minecraft 26.1 Snapshot 1\
+**Incompatible with Sodium!**
 
 Video: https://youtu.be/WDjhtDT9G6Y
 
