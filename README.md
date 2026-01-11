@@ -27,7 +27,7 @@ It has next files:
 - `hal_list.glsl` - list of areas that will be filled with light
 - `hal_modes.glsl` - blend modes for lighting
 - `hal_shapes.glsl` - shapes of areas in which light "spreads"
-- `hal.glsl` - main file for lighting. Also here count of lights is defined
+- `hal.glsl` - main file for lighting.
 
 Mainly you need only `hal_list.glsl` and `hal_config.glsl`
 
